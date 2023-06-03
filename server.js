@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const app = express();
 
 const port = process.env.port || 5000;
-
+app.use(express.json());
 app.use("/api/contacts", require("./routes/ContactsRouts"));
 
 

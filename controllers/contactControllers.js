@@ -12,6 +12,13 @@ const getContacts = (req,res) =>{
 // access public
 
 const createContacts = (req,res) =>{
+    console.log("the body is = ",req.body);
+    const {Name , Email , Phone} = req.body;
+    if(!Name || !Email || !Phone){
+        res.status(404);
+        throw new Error("All fileds are required");
+    }
+    console.log()
     res.status(201).json({ Message: "Create Contacts"});
 }
 
@@ -29,7 +36,7 @@ const getContact = (req,res) =>{
 // PUT /api/contact/:id
 // access public
 
-const updateContacts = (req,res) =>{
+const updateContacts = (req,res) => {
     res.status(200).json({Message: `update Contacts${req.params.id}`});
 };
 
@@ -38,7 +45,7 @@ const updateContacts = (req,res) =>{
 // POST /api/contact/:id
 // access public
 
-const deleteContact = (req,res) =>{
+const deleteContact = (req,res) => {
     res.status(200).send({ Message: `delete Contacts${req.params.id}`});
 }
 
